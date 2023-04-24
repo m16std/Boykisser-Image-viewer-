@@ -9,14 +9,14 @@
 
     <Grid>
 
-        <Menu Grid.ColumnSpan="2" Background="#FF232323" >
-            <MenuItem Header="Файл" Foreground="White" FontSize="14">
-                <MenuItem Header="Открыть" Command="{Binding OpenCommand}" />
-                <MenuItem Header="Сохранить" Command="{Binding SaveCommand}" />
+        <Menu Grid.ColumnSpan="2" Background="#FF232323" BorderBrush="#FF272727">
+            <MenuItem Header="Файл" Foreground="White" FontSize="14" Background="#FF272727" BorderBrush="#FF272727">
+                <MenuItem Header="Открыть" Command="{Binding OpenCommand}" Background="#FF272727" BorderBrush="#FF272727" />
+                <MenuItem Header="Сохранить" Command="{Binding SaveCommand}" Background="#FF272727" BorderBrush="#FF272727"/>
             </MenuItem>
-            <MenuItem Header="Масштаб" Foreground="White" FontSize="14">
-                <MenuItem Header="Растянуть" Click="StretchFill"/>
-                <MenuItem Header="1/1" Click="StretchNone"/>
+            <MenuItem Header="Масштаб" Foreground="White" FontSize="14" Background="#FF272727" BorderBrush="#FF272727">
+                <MenuItem Header="Растянуть" Click="StretchFill" Background="#FF272727" BorderBrush="#FF272727"/>
+                <MenuItem Header="1/1" Click="StretchNone" Background="#FF272727" BorderBrush="#FF272727"/>
             </MenuItem>
         </Menu>
         <local:ZoomBorder x:Name="border" ClipToBounds="True" Background="#FF272727" Margin="0,23,0,50" >
