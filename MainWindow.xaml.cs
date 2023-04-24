@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -24,5 +23,32 @@ namespace Boykisser
         {
             InitializeComponent();
         }
+
+
+        private void MouseWheelHandler(object sender, MouseWheelEventArgs e)
+        {
+            // If the mouse wheel delta is positive, move the box up.
+            if (e.Delta > 0)
+            { 
+            }
+
+            // If the mouse wheel delta is negative, move the box down.
+            if (e.Delta < 0)
+            {
+
+            }
+        }
+
+        private void StretchFill(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void StretchNone(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
+
+    
 }

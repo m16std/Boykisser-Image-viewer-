@@ -9,10 +9,19 @@
 
   <ItemGroup>
     <None Remove="AKfw6JC6rOA.jpg" />
+    <None Remove="coastline-seashore-rocks-macos-big-sur-stock-5k-6016x6016-3994.jpg" />
+    <None Remove="oHkWfP1f3sM.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ImageProcessor" Version="2.9.1" />
+    <PackageReference Include="PA.Picture" Version="4.7.4" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="AKfw6JC6rOA.jpg" />
+    <Resource Include="coastline-seashore-rocks-macos-big-sur-stock-5k-6016x6016-3994.jpg" />
+    <Resource Include="oHkWfP1f3sM.jpg" />
   </ItemGroup>
 
 </Project>

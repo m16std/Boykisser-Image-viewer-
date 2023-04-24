@@ -5,9 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Boykisser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Image Height="378" VerticalAlignment="Top" Width="797" Margin="1,6,2,0" Source="/AKfw6JC6rOA.jpg"/>
+        Title="You like kissing boys don't you" Height="1080" Width="1920" >
 
+    <Grid>
+
+        <Menu Grid.ColumnSpan="2" Background="#FF232323" >
+            <MenuItem Header="Файл" Foreground="White" FontSize="14">
+                <MenuItem Header="Открыть" Command="{Binding OpenCommand}" />
+                <MenuItem Header="Сохранить" Command="{Binding SaveCommand}" />
+            </MenuItem>
+            <MenuItem Header="Масштаб" Foreground="White" FontSize="14">
+                <MenuItem Header="Растянуть" Click="StretchFill"/>
+                <MenuItem Header="1/1" Click="StretchNone"/>
+            </MenuItem>
+        </Menu>
+        <local:ZoomBorder x:Name="border" ClipToBounds="True" Background="#FF272727" Margin="0,23,0,50" >
+            <Image Source="/coastline-seashore-rocks-macos-big-sur-stock-5k-6016x6016-3994.jpg" Stretch="Uniform"/>
+        </local:ZoomBorder>
     </Grid>
 </Window>
