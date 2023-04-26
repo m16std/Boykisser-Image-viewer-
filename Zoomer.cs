@@ -125,12 +125,12 @@ namespace Boykisser
             //Reset();
         }
 
-        public void SetOneToOne(double ImageboxWidth)
+        public void SetOneToOne(double ImageboxHeight)
         {
             var scl = GetScale(child);
             var pos = GetPosition(child);
 
-            double zoom = MainWindow.ImageWidth / SystemParameters.PrimaryScreenWidth;
+            double zoom = MainWindow.ImageHeight / (SystemParameters.PrimaryScreenHeight + 22);
 
             pos.X = SystemParameters.PrimaryScreenHeight * 0.5 - MainWindow.ImageWidth * 0.5;
             pos.Y = SystemParameters.PrimaryScreenHeight * 0.5 - MainWindow.ImageHeight * 0.5;

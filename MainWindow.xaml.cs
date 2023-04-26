@@ -117,7 +117,7 @@ namespace Boykisser
         }
         private void Real(object sender, RoutedEventArgs e)
         {
-            border.SetOneToOne(ImageBox.Width);
+            border.SetOneToOne(ImageBox.Height);
         }
         private void timerTick(object sender, EventArgs e)
         {
