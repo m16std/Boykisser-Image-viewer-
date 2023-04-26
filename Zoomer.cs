@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace Boykisser
 {
-    public class ZoomBorder : Border
+    public class Zoomer : Border
     {
         private UIElement child = null;
         private Point origin;
@@ -52,23 +52,7 @@ namespace Boykisser
                 this.MouseLeftButtonUp += child_MouseLeftButtonUp;
                 this.MouseMove += child_MouseMove;
                 this.PreviewMouseRightButtonDown += new MouseButtonEventHandler(
-                  child_PreviewMouseRightButtonDown);
-            }
-        }
-
-        public void Reset()
-        {
-            if (child != null)
-            {
-                // масштаб на единицу
-                var st = GetScale(child);
-                st.ScaleX = 1.0;
-                st.ScaleY = 1.0;
-
-                // позицию в центр
-                var tt = GetPosition(child);
-                tt.X = 0.0;
-                tt.Y = 0.0;
+                child_PreviewMouseRightButtonDown);
             }
         }
 
@@ -78,8 +62,8 @@ namespace Boykisser
         {
             if (child != null)
             {
-                var st = GetScale(child);
-                var tt = GetPosition(child);
+                var scl = GetScale(child);
+                var pos = GetPosition(child);
 
                 double zoom;
                 if (e.Delta > 0)
@@ -87,16 +71,31 @@ namespace Boykisser
                 else
                     zoom  = 0.95;
 
-                if (!(e.Delta > 0) && (st.ScaleX < .4 || st.ScaleY < .4))
+                if (((e.Delta < 0) && (scl.ScaleX < .3 || scl.ScaleY < .3)) || ((e.Delta > 0) && (scl.ScaleX > 20 || scl.ScaleY > 20)))
                     return;
 
                 Point relative = e.GetPosition(child);
 
-                tt.X = relative.X * st.ScaleX + tt.X - relative.X * (st.ScaleX * zoom);
-                tt.Y = relative.Y * st.ScaleY + tt.Y - relative.Y * (st.ScaleY * zoom);
+                pos.X = relative.X * scl.ScaleX * (1-zoom) + pos.X;
+                pos.Y = relative.Y * scl.ScaleY * (1-zoom) + pos.Y; 
 
-                st.ScaleX *= zoom;
-                st.ScaleY *= zoom;
+                scl.ScaleX *= zoom;
+                scl.ScaleY *= zoom;
+            }
+        }
+
+        public void Reset()
+        {
+            if (child != null)
+            {
+                var st = GetScale(child);
+                var tt = GetPosition(child);
+
+                tt.X = 0;
+                tt.Y = 0;
+
+                st.ScaleX = 1;
+                st.ScaleY = 1;
             }
         }
 
@@ -121,9 +120,23 @@ namespace Boykisser
             }
         }
 
-        void child_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        private void child_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.Reset();
+            //Reset();
+        }
+
+        public void SetOneToOne(double ImageboxWidth)
+        {
+            var scl = GetScale(child);
+            var pos = GetPosition(child);
+
+            double zoom = MainWindow.ImageHeight / SystemParameters.PrimaryScreenHeight;
+
+            pos.X = ImageboxWidth * 0.5  - MainWindow.ImageWidth * 0.5;
+            pos.Y = SystemParameters.PrimaryScreenHeight * 0.5 * (1 - zoom);
+
+            scl.ScaleX = zoom;
+            scl.ScaleY = zoom;
         }
 
         private void child_MouseMove(object sender, MouseEventArgs e)

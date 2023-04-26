@@ -5,22 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Boykisser"
         mc:Ignorable="d"
-        Title="You like kissing boys don't you" Height="1080" Width="1920" >
+        Title="You like kissing boys don't you" Height="900" Width="1600" WindowStartupLocation="CenterScreen" >
 
-    <Grid>
+    <Grid Background="Black">
 
-        <Menu Grid.ColumnSpan="2" Background="#FF232323" BorderBrush="#FF272727">
-            <MenuItem Header="Файл" Foreground="White" FontSize="14" Background="#FF272727" BorderBrush="#FF272727">
-                <MenuItem Header="Открыть" Command="{Binding OpenCommand}" Background="#FF272727" BorderBrush="#FF272727" />
-                <MenuItem Header="Сохранить" Command="{Binding SaveCommand}" Background="#FF272727" BorderBrush="#FF272727"/>
+
+        <Image x:Name="BackgroundImage" Margin="0,22,0,0" Source="{Binding Image, UpdateSourceTrigger=PropertyChanged}" Stretch="UniformToFill">
+            <Image.Effect>
+                <BlurEffect Radius="100"/>
+            </Image.Effect>
+        </Image>
+
+        <Rectangle x:Name="Zatenenie" Margin="0,0,0,0" Stroke="Black" Opacity="0.7" Fill="Black"/>
+
+        <local:Zoomer x:Name="border" ClipToBounds="True" Height="863" VerticalAlignment="Top" Margin="0,22,0,0" >
+            <Image x:Name="ImageBox" Source="{Binding Image, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,0"/>
+        </local:Zoomer>
+
+
+
+        <Menu Background="#FF232323" Opacity="0.7" Height="22" VerticalAlignment="Top" BorderThickness="0" Padding="2">
+
+            <MenuItem Header="Файл" Foreground="White" FontSize="15" Background="#FF272727" BorderBrush="#FF272727" BorderThickness="0">
+                <MenuItem Header="Открыть" Command="{Binding OpenFileDialogCommand}" Background="#FF272727" BorderBrush="#FF272727"/>
             </MenuItem>
-            <MenuItem Header="Масштаб" Foreground="White" FontSize="14" Background="#FF272727" BorderBrush="#FF272727">
-                <MenuItem Header="Растянуть" Click="StretchFill" Background="#FF272727" BorderBrush="#FF272727"/>
-                <MenuItem Header="1/1" Click="StretchNone" Background="#FF272727" BorderBrush="#FF272727"/>
+            <MenuItem Header="Масштаб" Foreground="White" FontSize="15" Background="#FF272727" BorderBrush="#FF272727" BorderThickness="0">
+                <MenuItem Header="По размеру окна" Click="Reset" Background="#FF272727" BorderBrush="#FF272727" />
+                <MenuItem Header="Реальный" Click="Real" Background="#FF272727" BorderBrush="#FF272727" />
             </MenuItem>
         </Menu>
-        <local:ZoomBorder x:Name="border" ClipToBounds="True" Background="#FF272727" Margin="0,23,0,50" >
-            <Image Source="/coastline-seashore-rocks-macos-big-sur-stock-5k-6016x6016-3994.jpg" Stretch="Uniform"/>
-        </local:ZoomBorder>
+        <TextBox x:Name="myTextBox" HorizontalAlignment="Right" Margin="0,3,20,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="292" BorderThickness="0" Background="Transparent" Foreground="White"/>
     </Grid>
+
+
 </Window>
+    
