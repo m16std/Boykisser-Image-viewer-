@@ -130,10 +130,10 @@ namespace Boykisser
             var scl = GetScale(child);
             var pos = GetPosition(child);
 
-            double zoom = MainWindow.ImageHeight / SystemParameters.PrimaryScreenHeight;
+            double zoom = MainWindow.ImageWidth / SystemParameters.PrimaryScreenWidth;
 
-            pos.X = ImageboxWidth * 0.5  - MainWindow.ImageWidth * 0.5;
-            pos.Y = SystemParameters.PrimaryScreenHeight * 0.5 * (1 - zoom);
+            pos.X = SystemParameters.PrimaryScreenHeight * 0.5 - MainWindow.ImageWidth * 0.5;
+            pos.Y = SystemParameters.PrimaryScreenHeight * 0.5 - MainWindow.ImageHeight * 0.5;
 
             scl.ScaleX = zoom;
             scl.ScaleY = zoom;
