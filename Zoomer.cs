@@ -71,7 +71,7 @@ namespace Boykisser
                 else
                     zoom  = 0.95;
 
-                if (((e.Delta < 0) && (scl.ScaleX < .3 || scl.ScaleY < .3)) || ((e.Delta > 0) && (scl.ScaleX > 20 || scl.ScaleY > 20)))
+                if (((e.Delta < 0) && (scl.ScaleX < .1 || scl.ScaleY < .1)) || ((e.Delta > 0) && (scl.ScaleX > 20 || scl.ScaleY > 20)))
                     return;
 
                 Point relative = e.GetPosition(child);
@@ -81,21 +81,6 @@ namespace Boykisser
 
                 scl.ScaleX *= zoom;
                 scl.ScaleY *= zoom;
-            }
-        }
-
-        public void Reset()
-        {
-            if (child != null)
-            {
-                var st = GetScale(child);
-                var tt = GetPosition(child);
-
-                tt.X = 0;
-                tt.Y = 0;
-
-                st.ScaleX = 1;
-                st.ScaleY = 1;
             }
         }
 
@@ -122,21 +107,23 @@ namespace Boykisser
 
         private void child_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //Reset();
+           
         }
 
         public void SetOneToOne(double ImageboxHeight)
         {
-            var scl = GetScale(child);
-            var pos = GetPosition(child);
+            if (child != null)
+            {
+                var st = GetScale(child);
+                var tt = GetPosition(child);
 
-            double zoom = MainWindow.ImageHeight / (SystemParameters.PrimaryScreenHeight + 22);
+                tt.X = 0;
+                tt.Y = 0;
 
-            pos.X = SystemParameters.PrimaryScreenHeight * 0.5 - MainWindow.ImageWidth * 0.5;
-            pos.Y = SystemParameters.PrimaryScreenHeight * 0.5 - MainWindow.ImageHeight * 0.5;
+                st.ScaleX = 1;
+                st.ScaleY = 1;
+            }
 
-            scl.ScaleX = zoom;
-            scl.ScaleY = zoom;
         }
 
         private void child_MouseMove(object sender, MouseEventArgs e)

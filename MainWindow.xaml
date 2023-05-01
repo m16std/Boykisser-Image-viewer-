@@ -314,8 +314,8 @@
 
         <Rectangle x:Name="Zatenenie" Margin="0,0,0,0" Stroke="Black" Opacity="0.7" Fill="Black"/>
 
-        <local:Zoomer x:Name="border" ClipToBounds="True" Margin="0,0,0,0" >
-            <Image x:Name="ImageBox" Source="{Binding Image, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,0" Stretch="Uniform"/>
+        <local:Zoomer x:Name="border" ClipToBounds="True" Margin="0,0,0,0" Width="5000" Height="5000" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Image x:Name="ImageBox" Source="{Binding Image, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,0" Stretch="None" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </local:Zoomer>
 
 
@@ -326,7 +326,6 @@
                 <MenuItem Header="Открыть" Command="{Binding OpenFileDialogCommand}" Background="#FF272727" />
             </MenuItem>
             <MenuItem Header="Масштаб" Foreground="White" FontSize="15" Background="#FF272727" BorderBrush="#FF272727" BorderThickness="0">
-                <MenuItem Header="По размеру окна" Click="Reset" Background="#FF272727" />
                 <MenuItem Header="Реальный" Click="Real" Background="#FF272727" />
             </MenuItem>
         </Menu>

@@ -111,10 +111,6 @@ namespace Boykisser
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
         }
-        private void Reset(object sender, RoutedEventArgs e)
-        {
-            border.Reset();
-        }
         private void Real(object sender, RoutedEventArgs e)
         {
             border.SetOneToOne(ImageBox.Height);
@@ -132,6 +128,4 @@ namespace Boykisser
             myTextBox.Text += " px";
         }
     }
-
-
 }
